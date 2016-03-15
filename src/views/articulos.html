@@ -1,0 +1,22 @@
+<template>
+    <style>
+        .card img {
+            height: 150px
+        }
+    </style>
+    <div class="row">
+        <div class="col s12 m4" repeat.for="articulo of articulos">
+            <div class="card small" click.delegate="addArticuloToCarrito(articulo)">
+                <div class="card-image">
+                    <img src.bind="articulo.imagenPath">
+                </div>
+                <div class="card-content">
+                    <div class="card-title activator grey-text text-darken-4">
+                        ${articulo.nombre} ${articulo.subNombre}
+                    </div>
+                    <div>$ ${articulo.precio_venta}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

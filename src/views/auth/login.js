@@ -1,17 +1,23 @@
 import {inject} from 'aurelia-framework';
-// import {HttpClient, json} from 'aurelia-fetch-client';
 import AuthService from 'services/auth';
+import {Router} from 'aurelia-router';
 
-@inject(AuthService)
+@inject(AuthService, Router)
 export class Login {
   username = '';
   password = '';
 
-  constructor(auth) {
-    // this.http = http;
+  constructor(auth, router) {
     this.auth = auth;
+    this.router = router;
   }
 
+  canActivate(){
+    if(this.auth.loggedIn){
+      this.router.navigateToRoute('menu');
+      return false;
+    }
+  }
   submit() {
     this.auth.login(this.username, this.password);
 

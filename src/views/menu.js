@@ -7,8 +7,7 @@ export class Menu {
     }
 
     activate() {
-        return this
-            .articulosService
-            .getArticulos()
+        return this.articulosService.getArticulos().then(r=>this.articulos = r);
     }
+
 }

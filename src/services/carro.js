@@ -3,7 +3,6 @@ import {BindingEngine, inject, computedFrom} from 'aurelia-framework';
 import $ from 'jquery';
 import {Config} from '../config/config.js';
 import AuthService from '../services/auth';
-import toastr from 'toastr';
 import {Router} from 'aurelia-router';
 @inject(BindingEngine, Config, AuthService, Router)
 export class CarroService {
@@ -11,7 +10,7 @@ export class CarroService {
     total = 0;
     articulosChanged = undefined;
     constructor(bindingEngine, config, auth, router) {
-        this.bindingEngint = bindingEngine;
+        this.bindingEngine = bindingEngine;
         this.config = config;
         this.url = `${this.config.urlApi}/buffet_cierra`;
         this.auth = auth;
@@ -19,7 +18,6 @@ export class CarroService {
         this.subscription = bindingEngine
             .collectionObserver(this.articulos)
             .subscribe((a)=>{
-                console.log(a);
                 this.articulosChanged = Date();
             });
     }
@@ -28,7 +26,7 @@ export class CarroService {
         this.articulos.push(articulo);
         // console.log('articulosParaSubir %O', this.articulosParaSubir);
         this.total += Number(articulo.precio_venta);
-        toastr.info(`${articulo.nombre} fué añadido`, 'Carrito');
+        //toastr.info(`${articulo.nombre} fué añadido`, 'Carrito');
     }
 
     remove(articulo) {
@@ -72,7 +70,7 @@ export class CarroService {
             .then(response=> {
                 console.log('cierra',response.data,response);
                 if (response.status === 'ok') {
-                    toastr.info(`Su pedido fue grabado y está siendo impreso`, 'Cierre');
+                    //toastr.info(`Su pedido fue grabado y está siendo impreso`, 'Cierre');
                     setTimeout(()=>{
 
                     },2000);

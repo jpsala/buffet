@@ -1,0 +1,18 @@
+<template bindable="carroService,router, auth">
+<require from="./log"></require>
+<md-navbar>
+    <a href="#/about" md-waves class="brand-logo left"><span>IAE</span></a>
+    <ul class="right">
+        <li repeat.for="row of router.navigation" md-waves class="${row.isActive ? 'active' : ''}">
+            <a href="${row.href}">${row.title}</a>
+        </li>
+        <a md-waves if.bind="auth.loggedIn" class="right" href="/#" click.delegate="auth.logout()">
+            <span class="right">
+                Salir&nbsp;
+                <i if.bind="!router.isNavigating" class="fa fa-power-off" style="display: inline;"></i>
+                <i if.bind="router.isNavigating" class="fa fa-spinner fa-spin" style="display: inline;"></i>
+            </span>
+        </a>
+    </ul>
+</md-navbar>
+</template>

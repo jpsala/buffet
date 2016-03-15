@@ -6,9 +6,8 @@
         .card .card-title{font-size: 1.15em}
     </style>
 
-        <div class="col s12 m4 l2" repeat.for="articulo of articulos">
-            <md-card click.delegate="addArticuloToCarrito(articulo)"
-                     md-image.bind="articulo.imagenPath">
+        <div class="col s1 m12" repeat.for="articulo of articulos">
+            <md-card>
                     <div class="card-title">
                         ${articulo.nombre} ${articulo.subNombre}
                     </div>

@@ -1,9 +1,11 @@
 import {inject, computedFrom} from 'aurelia-framework';
 import {ArticulosService} from './../services/articulos';
-@inject(ArticulosService)
+import {CarroService} from './../services/carro';
+@inject(ArticulosService, CarroService)
 export class Menu {
-    constructor(articulosService) {
+    constructor(articulosService, carroService) {
         this.articulosService = articulosService;
+        this.carroService = carroService;
     }
 
     activate() {

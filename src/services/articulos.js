@@ -1,4 +1,4 @@
-import {HttpClient} from 'aurelia-http-client';
+import {HttpClient, json} from 'aurelia-fetch-client';
 import {inject} from 'aurelia-framework';
 import {Config} from '../config/config.js';
 @inject(HttpClient, Config)
@@ -14,12 +14,29 @@ export class ArticulosService {
     }
 
     getArticulos() {
-        if(this._articulos.length === 0){
-            return this.http.jsonp(`${this.url}`, "callback")
-                .then(r=>r.response.map((e)=>Object.assign({},e,{imagenPath:`./images/${e.imagen.trim()}`})))
-                .then(r=>this._articulos = r)
-        }else{
-            return new Promise((fulfill)=>{
+        if (this._articulos.length === 0) {
+            return this
+                .http
+                .fetch('/buffet_articulos', {
+                    method: 'post',
+                    crossDomain: true,
+                    body: json({grant_type: 'password', username: 'aa', password: 'bb'}),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then((response) => {
+                    if (response.status === 200) {
+                        return response;
+                    }
+                    throw new Error(response.statusText);
+                })
+                .then(r=>r.data.map((e)=>Object.assign({}, e, {imagenPath: `./images/${e.imagen.trim()}`})))
+
+
+        } else {
+            return new Promise((fulfill)=> {
+                console.log('fulfilling! je');
                 fulfill(this._articulos);
             });
         }

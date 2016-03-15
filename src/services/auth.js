@@ -21,6 +21,7 @@ export default class AuthService {
     }
 
     confitureAuth() {
+        let that = this;
         this.http.configure(config => {
             config
                 .withBaseUrl(this.config.urlApi)
@@ -32,16 +33,19 @@ export default class AuthService {
                 .withInterceptor({
                     request(request) {
                         if (this.loggedIn) {
-                            request.headers.append('Authorization', `Bearer ${auth.getToken()}`);
+                            request.headers.append('Authorization', `Bearer ${this.getToken()}`);
                         }
                         return request;
                     },
                     response(response) {
-                        if (response.status === 401) {
-                            this.removeToken();
-                            this.router.navigateToRoute('login');
-                        }
-                        return response;
+                        return response.json()
+                            .then(response=> {
+                                if (response.status === 401) {
+                                    that.removeToken();
+                                    this.router.navigateToRoute('login');
+                                }
+                                return response;
+                            })
                     }
                 });
         });
@@ -57,32 +61,6 @@ export default class AuthService {
     }
 
     login(username, password) {
-        //$.ajax({
-        //        url: this.urlAuth,
-        //        type: 'POST',
-        //        dataType: 'json',
-        //        crossDomain: true,
-        //        data: {grant_type: 'password', username: username, password: password},
-        //        //headers: {'Authorization': 'Bearer token123'},
-        //        error: (data) => {
-        //            console.log(data);
-        //            alert('error en login, ver consola');
-        //        }
-        //    })
-        //    .then(response=> {
-        //        if (response.status === 200) {
-        //            return response;
-        //        }
-        //        throw new Error(response.statusText);
-        //    })
-        //    .then((response) => {
-        //        let token = response.access_token;
-        //        this.saveToken(token);
-        //        this.user = response.user;
-        //        this.storage.setItem('user', JSON.stringify(this.user));
-        //        console.log(this.user);
-        //        this.router.navigateToRoute('menu');
-        //    });
         this
             .http
             .fetch('/auth', {
@@ -95,9 +73,8 @@ export default class AuthService {
             })
             .then((response) => {
                 if (response.status === 200) {
-                    return response.json();
+                    return response;
                 }
-                console.log('44', response);
                 throw new Error(response.statusText);
             })
             .then((response) => {

@@ -26,7 +26,7 @@ export class CarroService {
         this.articulos.push(articulo);
         // console.log('articulosParaSubir %O', this.articulosParaSubir);
         this.total += Number(articulo.precio_venta);
-        //toastr.info(`${articulo.nombre} fué añadido`, 'Carrito');
+        //toastr.info(`${articulo.nombre} fuÃ© aÃ±adido`, 'Carrito');
     }
 
     remove(articulo) {
@@ -56,8 +56,8 @@ export class CarroService {
                 dataType: 'json',
                 crossDomain: true,
                 data:{
-                    //doc:{socio_id:this.auth.user.socio_id, total:this.total},
-                    items:this.articulos
+//                     doc:{socio_id:this.auth.user.socio_id, total:this.total},
+//                     items:this.articulos
                 },
                 beforeSend: (request) =>
                 {
@@ -70,7 +70,7 @@ export class CarroService {
             .then(response=> {
                 console.log('cierra',response.data,response);
                 if (response.status === 'ok') {
-                    //toastr.info(`Su pedido fue grabado y está siendo impreso`, 'Cierre');
+                    //toastr.info(`Su pedido fue grabado y estÃ¡ siendo impreso`, 'Cierre');
                     setTimeout(()=>{
 
                     },2000);

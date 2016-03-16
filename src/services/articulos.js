@@ -1,6 +1,7 @@
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {inject} from 'aurelia-framework';
 import {Config} from '../config/config.js';
+import {Articulo} from '../models/articulo'
 @inject(HttpClient, Config)
 export class ArticulosService {
     //url = "http://localhost/iae/?r=api/buffet_articulos";
@@ -31,7 +32,11 @@ export class ArticulosService {
                     }
                     throw new Error(response.statusText);
                 })
-                .then(r=>r.data.map((e)=>Object.assign({}, e, {imagenPath: `./images/${e.imagen.trim()}`})))
+                .then(r=>r.data.map((e)=>{
+                    let articulo = new Articulo;
+                    Object.assign(articulo, e, {imagenPath: `./images/${e.imagen.trim()}`});
+                    return articulo;
+                }))
 
 
         } else {

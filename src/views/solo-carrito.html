@@ -1,0 +1,22 @@
+<template>
+    <table class="bordered striped">
+        <thead>
+        <tr>
+            <th data-field="id">Producto</th>
+            <th style="text-align: right" data-field="name">Precio</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr repeat.for="articulo of carroService.articulos">
+            <td>${articulo.nombreConSub}</td>
+            <td style="text-align: right">${articulo.precioConSub}</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td style="text-align: right">${carroService.total}</td>
+        </tr>
+        </tbody>
+    </table>
+    <a click.delegate="carroService.cierra()" if.bind="carroService.articulos.length > 0" class="col-xs-12 btn btn-lg btn-danger ">Cierra e Imprime</a>
+</template>

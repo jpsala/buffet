@@ -18,3 +18,14 @@
   font-size: 72px;
   margin-top: 50px;
 }
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.articulo-carro {
+  padding: 0px!important;
+  margin: 0.5rem 0 0rem 0;
+  border-radius: 2px;
+  background-color: #fff;
+}

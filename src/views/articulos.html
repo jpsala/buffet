@@ -1,18 +1,109 @@
-<template>
+<template id="articulos">
+    <require from="./articulo-dlg"></require>
     <style>
         .card img {
-            height: 180px
+            height: 180px;
+            max-width: 225px;
         }
-        .card .card-title{font-size: 1.15em}
+
+        #col-articulos .col {
+            text-align: center
+        }
+        #col-articulos .card .card-image img{
+            display: initial;
+        }
+
+        /*.card .card-title {*/
+        /*font-size: 1.15em*/
+        /*}*/
+
+        articulos img.responsive-img, video.responsive-video {
+            max-width: 80px !important;
+
+        }
+
+        articulos .col {
+            /*width: 250px !important;*/
+            min-width: 250px !important;
+            /*max-width: 250px !important;*/
+        }
+
+        /*@media only screen and (max-width: 220px) {*/
+        /*articulos .col {*/
+        /*min-width: 180px !important;*/
+        /*}*/
+        /*}*/
+        /*@media only screen and (min-width: 220px) and (max-width: 449px) {*/
+        /*articulos .col {*/
+        /*max-width: 220px !important;*/
+        /*float:none !important;*/
+        /*}*/
+        /*}*/
+        /*@media only screen and (min-width: 450px) {*/
+        /*articulos .col {*/
+        /*max-width:33% !important;*/
+        /*}*/
+        /*}*/
+
+        /*@media only screen and (min-width: 993px){*/
+        /*articulos .col{*/
+        /*min-width: 150px !important;*/
+        /*}*/
+        /*}*/
+
+        /*@media only screen and (min-width: 350px) {*/
+        /*articulos .col {*/
+        /*width: 100% !important;*/
+        /*}*/
+        /*}*/
+
+        /*@media only screen and (min-width: 180px) and (max-width: 200px){*/
+        /*articulos  .col {*/
+        /*width: 100% !important;*/
+        /*}*/
+        /*}*/
+        /*@media only screen and (min-width: 350px) and (max-width: 640px) {*/
+        /*articulos .col {*/
+        /*width: 50% !important;*/
+        /*}*/
+        /*}*/
+
+        /*@media only screen and (min-width: 200px) {*/
+        /*articulos .col.s12 {*/
+        /*max-width: 180px !important;*/
+        /*min-width: 180px !important;*/
+        /*margin-left: auto;*/
+        /*left: auto;*/
+        /*right: auto;*/
+        /*}*/
+        /*}*/
     </style>
 
-        <div class="col s12 m4 l2" repeat.for="articulo of articulos">
-            <md-card click.delegate="addArticuloToCarrito(articulo)"
-                     md-image.bind="articulo.imagenPath">
+    <div class="col s12 m4 l2" repeat.for="articulo of articulos">
+        <template if.bind="articulo.subs.length > 0">
+            <a md-modal-trigger href="#dlg-${articulo.id}">
+                <md-card
+                        md-image.bind="articulo.imagenPath">
                     <div class="card-title">
-                        ${articulo.nombre} ${articulo.subNombre}
+                        ${articulo.nombre}
                     </div>
                     <div>$ ${articulo.precio_venta}</div>
-            </md-card>
-        </div>
+                </md-card>
+            </a>
+            <div class="modal" as-element="articulo-dlg"
+                 id="dlg-${articulo.id}" articulo.bind="articulo"
+                 callback.bind="addArticuloToCarrito"></div>
+        </template>
+        <template if.bind="!articulo.subs.length > 0">
+            <a href="">
+                <md-card click.delegate="addArticuloToCarrito(articulo)"
+                         md-image.bind="articulo.imagenPath">
+                    <div class="card-title">
+                        ${articulo.nombre}
+                    </div>
+                    <div>$ ${articulo.precio_venta}</div>
+                </md-card>
+            </a>
+        </template>
+    </div>
 </template>

@@ -1,0 +1,22 @@
+<template>
+    <style>
+        .header {
+            margin-bottom: 2mm
+        }
+    </style>
+    <require from="./../converters/date-converter"></require>
+    <div class="header">
+        <span>Buffet IAE</span>
+        <span class="pull-xs-right">${fecha}</span>
+    </div>
+    <hr>
+    <div repeat.for="articulo of articulos">
+        <small>${articulo.nombre} ${articulo.subNombre}</small>
+        <small class="pull-xs-right">$ ${articulo.precio_venta}</small>
+    </div>
+    <hr>
+    <div>
+        <small>Total</small>
+        <small class="pull-xs-right">$ ${total}</small>
+    </div>
+</template>

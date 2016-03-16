@@ -19,6 +19,8 @@ export class App {
         config.map([
             {route: 'login', name: 'login', moduleId: './auth/login', title: 'Login', auth: false},
             {route: 'menu', name: 'menu', moduleId: './menu', nav: true, title: 'Menú', auth: true},
+            {route: 'solo-carrito', name: 'carrito', moduleId: './solo-carrito', nav: true, title: 'Carrito', auth: true},
+            {route: 'print', name: 'print', moduleId: './print', nav: false, title: 'Imprimir', auth: true},
             {route: '', redirect: 'menu'}
         ]);
         this.router = router;

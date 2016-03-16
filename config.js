@@ -12,7 +12,6 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
-
   map: {
     "--lates": "npm:babel-core@5.8.35",
     "--lates-runtime": "npm:babel-runtime@5.8.35",
@@ -23,23 +22,24 @@ System.config({
     "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0-beta.1.1.4",
     "aurelia-loader-default": "npm:aurelia-loader-default@1.0.0-beta.1.1.3",
     "aurelia-logging-console": "npm:aurelia-logging-console@1.0.0-beta.1.1.4",
-    "aurelia-materialize-bridge": "github:aurelia-ui-toolkits/aurelia-materialize-bridge@0.1.0",
+    "aurelia-materialize-bridge": "github:aurelia-ui-toolkits/aurelia-materialize-bridge@0.1.1",
     "aurelia-router": "npm:aurelia-router@1.0.0-beta.1.1.3",
     "aurelia-templating-binding": "npm:aurelia-templating-binding@1.0.0-beta.1.1.2",
     "aurelia-templating-resources": "npm:aurelia-templating-resources@1.0.0-beta.1.1.3",
     "aurelia-templating-router": "npm:aurelia-templating-router@1.0.0-beta.1.1.2",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
-    "bootstrap": "github:twbs/bootstrap@3.3.6",
-    "core-js": "npm:core-js@2.1.5",
+    "core-js": "npm:core-js@2.2.0",
     "fetch": "github:github/fetch@0.10.1",
     "font-awesome": "npm:font-awesome@4.5.0",
+    "jquery": "npm:jquery@2.2.1",
+    "moment": "npm:moment@2.12.0",
     "text": "github:systemjs/plugin-text@0.0.3",
     "github:Dogfalo/materialize@0.97.5": {
       "css": "github:systemjs/plugin-css@0.1.20",
       "jquery": "github:components/jquery@2.2.1"
     },
-    "github:aurelia-ui-toolkits/aurelia-materialize-bridge@0.1.0": {
+    "github:aurelia-ui-toolkits/aurelia-materialize-bridge@0.1.1": {
       "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.2.2",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.1.5",
       "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.1.2",
@@ -60,9 +60,6 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
-    },
-    "github:twbs/bootstrap@3.3.6": {
-      "jquery": "github:components/jquery@2.2.1"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
@@ -189,7 +186,7 @@ System.config({
     "npm:babel-runtime@5.8.35": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:core-js@2.1.5": {
+    "npm:core-js@2.2.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
@@ -200,6 +197,9 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:moment@2.12.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"

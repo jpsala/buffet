@@ -1,4 +1,4 @@
-import {HttpClient} from 'aurelia-fetch-client';import 'bootstrap';
+//import 'bootstrap';
 
 export function configure(aurelia) {
   aurelia.use

@@ -1,0 +1,20 @@
+<template>
+        <div class="modal-content">
+            <h4>${articulo.nombre}</h4>
+            <table if.bind="articulo.subs.length > 0" class="stripped bordered highlight cursor-pointer">
+                <tbody>
+                <tr repeat.for="sub of articulo.subs"
+                    click.delegate="callback(articulo, sub)"
+                    onclick="$('.cancela-dialogo-articulo').click()">
+                    <td>${sub.nombre}</td>
+                    <td>${sub.precio_venta}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <a md-button="flat: true;" md-waves="color: accent;"
+               class="modal-action modal-close cancela-dialogo-articulo"
+            >Cancela</a>
+        </div>
+</template>

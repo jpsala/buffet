@@ -1,17 +1,40 @@
-<template>
+<template id="carro">
     <style>
-        .card img {
-            height: 180px
+        carro .card-panel {
+            max-width: 300px !important;
+            min-width: 300px;
+            float: right;
         }
-        .card .card-title{font-size: 1.15em}
     </style>
-
-        <div class="col s1 m12" repeat.for="articulo of articulos">
-            <md-card>
-                    <div class="card-title">
-                        ${articulo.nombre} ${articulo.subNombre}
-                    </div>
-                    <div>$ ${articulo.precio_venta}</div>
-            </md-card>
+    <div class="carro card-panel grey lighten-5 z-depth-1" repeat.for="articulo of articulos">
+        <div class="row valign-wrapper">
+            <span class="right cursor-pointer col s2" click.delegate="remove(articulo)">
+                    <i class="right fa fa-close"></i>
+            </span>
         </div>
+        <div class="row valign-wrapper">
+            <div class="col s5">
+                <img src="${articulo.imagenPath}" alt="" class="circle responsive-img"/>
+            </div>
+            <span class="black-text col s7 right" style="text-align: right">
+                ${articulo.nombreConSub}
+            </span>
+        </div>
+        <div class="row valign-wrapper">
+            <span class="col s8"></span>
+        <span class="right cursor-pointer col s4" click.delegate="remove(articulo)"  style="text-align: right">
+        ${articulo.precioConSub}
+
+        </span>
+        </div>
+    </div>
+    <div class="card-panel grey lighten-5 z-depth-1">
+        <div class="rosw valign-wrapper">
+            <div class="col s10">
+              <span class="black-text right">
+                ${carroService.total}
+              </span>
+            </div>
+        </div>
+    </div>
 </template>

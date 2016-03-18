@@ -10,7 +10,7 @@
         </li>
         <a md-waves if.bind="auth.loggedIn" class="right" href="/#" click.delegate="auth.logout()">
             <span class="right">
-                Salir&nbsp;
+                Salir&nbsp;${auth.user.nombre.substr(0,10)}...
                 <i if.bind="!router.isNavigating" class="fa fa-power-off" style="display: inline;"></i>
                 <i if.bind="router.isNavigating" class="fa fa-spinner fa-spin" style="display: inline;"></i>
             </span>

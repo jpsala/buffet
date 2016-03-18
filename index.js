@@ -3,7 +3,6 @@
 /* eslint-disable strict, no-var, no-console */
 
 'use strict';
-
 var app = require('app');
 var BrowserWindow = require('browser-window');
 var mainWindow = null;

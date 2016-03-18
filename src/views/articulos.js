@@ -7,12 +7,10 @@ export class Articulos {
 
     constructor(carroService) {
         this.carroService = carroService;
-        console.log('const', this.carroService);
     }
 
     addArticuloToCarrito(articulo, sub) {
         articulo.sub = sub;
-        console.log('articulo %O', articulo);
         this.carroService.add(articulo);
     }
 

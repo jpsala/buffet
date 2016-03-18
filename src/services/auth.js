@@ -27,22 +27,34 @@ export default class AuthService {
                 .withBaseUrl(this.config.urlApi)
                 .withDefaults({
                     headers: {
-                        'Content-Type': 'application/json'
-                    }
+                        'Content-Type': 'application/json',
+                        'credentials': 'include',
+                        'withCredentials': true
+                    },
+                    credentials: 'include'
                 })
                 .withInterceptor({
                     request(request) {
-                        if (this.loggedIn) {
-                            request.headers.append('Authorization', `Bearer ${this.getToken()}`);
+                        if (that.loggedIn) {
+                            console.log('api-interceptor-request(sending token):',`${that.getToken()}`, that.router.currentInstruction, request);
+                            request.headers.append('Authorization', `${that.getToken()}`);
+                        }else{
+                            console.log('api-interceptor-request(nada, not logged in)');
                         }
                         return request;
                     },
                     response(response) {
                         return response.json()
                             .then(response=> {
+                                let ruta = that.router;
+                                //console.log('api-interceptor-response',response,that.router.currentInstruction);
+                                console.log('api-interceptor-response',ruta,response);
                                 if (response.status === 401) {
+                                    let ruta = that.router.currentInstruction;//.config.name;
+                                    //console.log('401 en interceptor, ruta:', ruta, 'response:', response);
+                                    that.router.navigateToRoute('login');
                                     that.removeToken();
-                                    this.router.navigateToRoute('login');
+                                    return response;
                                 }
                                 return response;
                             })
@@ -67,7 +79,7 @@ export default class AuthService {
                 method: 'post',
                 crossDomain: true,
                 headers: {
-                    'Authorization': `Basic ${CLIENT_ID}`
+                    'authorization': `Basic ${CLIENT_ID}`,
                 },
                 body: json({grant_type: 'password', username: username, password: password})
             })
@@ -79,9 +91,11 @@ export default class AuthService {
             })
             .then((response) => {
                 let token = response.access_token;
+                //console.log('login token %O',token);
                 this.saveToken(token);
                 this.user = response.user;
                 this.storage.setItem('user', JSON.stringify(this.user));
+                //console.log(this.router.navigateToRoute);
                 this.router.navigateToRoute('menu');
             })
             .catch((err) => {
@@ -91,51 +105,48 @@ export default class AuthService {
 
     logout() {
         if (!this.loggedIn) {
-            this.closeThisWindow();
+            //this.closeThisWindow();
         }
-        let that = this;
-        $.ajax({
-                url: this.urlLogout,
-                type: 'POST',
-                dataType: 'json',
-                crossDomain: true,
-                beforeSend: function (request) {
-                    //request.setRequestHeader("Authorization", that.getToken());
-                },
-                error: (data) => {
-                    alert(data);
-                }
-            })
-            .then(response=> {
-                if (response.status === 200) {
-                    this.storage.removeItem('user');
-                    this.user = {'nombre': '', 'apellido': ''};
-                    this.removeToken();
-                    this.router.navigateToRoute('login');
-                    return response;
-                }
-                throw new Error(response.statusText);
-            });
-        return;
         this
             .http
-            .fetch('logout', {
+            .fetch('/logout', {
                 method: 'post',
-                headers: {
-                    'Authorization': `Basic ${CLIENT_ID}`
-                }
+                crossDomain: true,
             })
             .then((response) => {
-                if (response.status === 200) {
-                    this.removeToken();
-                    this.router.navigateToRoute('login');
-                    return response.json();
-                }
-                throw new Error(response.statusText);
+                this.storage.removeItem('user');
+                this.user = {'nombre': '', 'apellido': ''};
+                this.removeToken();
+                this.router.navigateToRoute('login');
+                return response;
             })
             .catch((err) => {
                 alert(err)
             });
+        //$.ajax({
+        //        url: this.urlLogout,
+        //        type: 'POST',
+        //        dataType: 'json',
+        //        crossDomain: true,
+        //        beforeSend: function (request) {
+        //            //request.setRequestHeader("Authorization", that.getToken());
+        //        },
+        //        error: (data) => {
+        //            alert(data);
+        //        }
+        //    })
+        //    .then(response=> {
+        //        if (response.status === 200) {
+        //            this.storage.removeItem('user');
+        //            this.user = {'nombre': '', 'apellido': ''};
+        //            this.removeToken();
+        //            this.router.navigateToRoute('login');
+        //            return response;
+        //        }
+        //        throw new Error(response.statusText);
+        //    });
+        //return;
+
     }
 
     get loggedIn() {

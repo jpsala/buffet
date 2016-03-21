@@ -12,7 +12,6 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
-
   map: {
     "--lates": "npm:babel-core@5.8.35",
     "--lates-runtime": "npm:babel-runtime@5.8.35",

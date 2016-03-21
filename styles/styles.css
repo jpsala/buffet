@@ -29,3 +29,16 @@
   border-radius: 2px;
   background-color: #fff;
 }
+@media screen{
+  .only-printer, .only-printer *
+  {
+    display: none !important;
+  }
+}
+@media print
+{
+  .no-print, .no-print *
+  {
+    display: none !important;
+  }
+}

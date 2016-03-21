@@ -5,18 +5,30 @@
         }
     </style>
     <require from="./../converters/date-converter"></require>
-    <div class="header">
-        <span>Buffet IAE</span>
-        <span class="pull-xs-right">${fecha}</span>
+    <div class="only-printer">
+        <div class="header">
+            <span>Buffet IAE</span>
+            <span class="pull-xs-right">${fecha}</span>
+        </div>
+        <hr>
+        <div repeat.for="articulo of articulos">
+            <small>${articulo.nombre} ${articulo.subNombre}</small>
+            <small class="pull-xs-right">$ ${articulo.precio_venta}</small>
+        </div>
+        <hr>
+        <div>
+            <small>Total</small>
+            <small class="pull-xs-right">$ ${total}</small>
+        </div>
     </div>
-    <hr>
-    <div repeat.for="articulo of articulos">
-        <small>${articulo.nombre} ${articulo.subNombre}</small>
-        <small class="pull-xs-right">$ ${articulo.precio_venta}</small>
-    </div>
-    <hr>
-    <div>
-        <small>Total</small>
-        <small class="pull-xs-right">$ ${total}</small>
+    <div class="no-print">
+        <div class="row">
+            <div class="col s12 m5">
+                <div class="card-panel teal">
+          <span class="white-text">Un momento, su pedido está siendo impreso
+          </span>
+                </div>
+            </div>
+        </div>
     </div>
 </template>

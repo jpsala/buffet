@@ -28,6 +28,6 @@ function resize() {
         $('#col-articulos').width(w - 20);
     } else {
         $('#col-carro').show();
-        $('#col-articulos').width(w - c - 100);
+        $('#col-articulos').width(w - c - 50);
     }
 }

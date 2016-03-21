@@ -18,5 +18,9 @@
         </tr>
         </tbody>
     </table>
-    <a click.delegate="carroService.cierra()" if.bind="carroService.articulos.length > 0" class="col-xs-12 btn btn-lg btn-danger ">Cierra e Imprime</a>
+    <div class="card-panel grey lighten-5 z-depth-1">
+        <div class="row">
+            <a click.delegate="carroService.cierra()" class="right col-xs-12 btn btn-lg btn-danger">Cierra e Imprime</a>
+        </div>
+    </div>
 </template>

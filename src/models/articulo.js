@@ -15,4 +15,8 @@ export class Articulo{
         //console.log('nc',this.nombre + (typeof this.sub === 'undefined') ? "si":"Undef");
         return (typeof this.sub === 'undefined') ? this.precio_venta:this.sub.precio_venta;
     }
+
+    get imagenPath(){
+        return `./images/${this.imagen.trim()}`;
+    }
 }

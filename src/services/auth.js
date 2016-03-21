@@ -31,15 +31,16 @@ export default class AuthService {
                         'credentials': 'include',
                         'withCredentials': true
                     },
-                    credentials: 'include'
-                })
+                    credentials: 'include',
+                    method: 'post',
+                    crossDomain: true})
                 .withInterceptor({
                     request(request) {
                         if (that.loggedIn) {
-                            console.log('api-interceptor-request(sending token):',`${that.getToken()}`, that.router.currentInstruction, request);
+                            //console.log('api-interceptor-request(sending token):',`${that.getToken()}`, that.router.currentInstruction, request);
                             request.headers.append('Authorization', `${that.getToken()}`);
                         }else{
-                            console.log('api-interceptor-request(nada, not logged in)');
+                            //console.log('api-interceptor-request(nada, not logged in)');
                         }
                         return request;
                     },
@@ -48,7 +49,7 @@ export default class AuthService {
                             .then(response=> {
                                 let ruta = that.router;
                                 //console.log('api-interceptor-response',response,that.router.currentInstruction);
-                                console.log('api-interceptor-response',ruta,response);
+                                //console.log('api-interceptor-response',ruta,response);
                                 if (response.status === 401) {
                                     let ruta = that.router.currentInstruction;//.config.name;
                                     //console.log('401 en interceptor, ruta:', ruta, 'response:', response);
@@ -76,11 +77,6 @@ export default class AuthService {
         this
             .http
             .fetch('/auth', {
-                method: 'post',
-                crossDomain: true,
-                headers: {
-                    'authorization': `Basic ${CLIENT_ID}`,
-                },
                 body: json({grant_type: 'password', username: username, password: password})
             })
             .then((response) => {

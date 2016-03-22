@@ -1,0 +1,36 @@
+<template id="articulos">
+    <style>
+        .nuevo{color:lightsalmon}
+        table { empty-cells: show; }
+    </style>
+    <div class="container">
+        <table class="stripped highlight bordered">
+            <theader>
+                <tr>
+                    <th>Nombre</th>
+                    <th>imagen</th>
+                    <th class="right-align">Precio</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </theader>
+            <tbody>
+            <!--<tr as-element="compose" view="${articuloNuevo === selected ? edit:view}" model.bind="{articulo:articuloNuevo}" click.delegate="select(articuloNuevo)"></tr>-->
+            <tr repeat.for="articulo of [articuloNuevo]"
+                click.delegate="select(articulo)"
+                as-element="compose"
+                view="${articulo === selected ? edit:view}"
+                model.bind="articulo" class="nuevo">
+            </tr>
+            <tr repeat.for="articulo of articulos"
+                load.delegate="enter()"
+                click.delegate="select(articulo)"
+                as-element="compose"
+                view="${articulo === selected ? edit:view}"
+                model.bind="articulo">
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</template>

@@ -23,6 +23,7 @@ export class App {
             {route: 'menu', name: 'menu', moduleId: './menu', nav: true, title: 'Menú', auth: true},
             {route: 'solo-carrito', name: 'carrito', moduleId: './solo-carrito', nav: true, title: 'Carrito', auth: true},
             {route: 'print', name: 'print', moduleId: './print', nav: false, title: 'Imprimir', auth: true},
+            {route: 'admin', name: 'admin', moduleId: './admin/articulos', nav: true, title: 'Admin', auth: true},
             {route: '', redirect: 'menu'}
         ]);
         this.router = router;

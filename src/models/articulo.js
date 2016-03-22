@@ -1,6 +1,14 @@
 import {computedFrom} from 'aurelia-framework'
 export class Articulo{
-    constructor(articulo){
+    constructor(articulo = undefined){
+        if(typeof articulo === 'undefined'){
+            articulo = {
+                id:-1,
+                nombre:'',
+                precio_venta:null,
+                imagen:''
+            }
+        }
         Object.assign(this, articulo);
     }
 
@@ -17,6 +25,6 @@ export class Articulo{
     }
 
     get imagenPath(){
-        return `./images/${this.imagen.trim()}`;
+        return this.imagen.trim()?`./images/${this.imagen.trim()}`:null;
     }
 }

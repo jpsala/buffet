@@ -1,0 +1,18 @@
+<template>
+    <style>
+        .fa { font-size: 15px !important;}img{max-width:100px}
+    </style>
+    <td>${articulo.id == -1 ? 'Nuevo':articulo.nombre}</td>
+    <td>${articulo.id == -1 ? 'Nuevo':articulo.imagen}</td>
+    <td class="right-align">${articulo.id == -1 ? 'Nuevo':articulo.precio_venta}</td>
+    <td class="center-align">
+        <img show.bind="articulo.imagenPath" src.bind="articulo.imagenPath" alt="">
+        <span show.bind="!articulo.imagenPath">Nuevo</span>
+    </td>
+    <td></td>
+    <td class="right-align">
+        <a Show.bind="articulo.id !== -1" click.delegate="del(articulo)" class="borra-articulo btn-floating mce-btn-small waves-effect waves-light red hide"><i class="fa fa-remove"></i></a>
+        <!--<a show.bind="articulo.id !== -1" click.delegate="del(articulo)" ><i class="fa fa-remove"></i></a>-->
+        <span show.bind="articulo.id == -1">Nuevo</span>
+    </td>
+</template>

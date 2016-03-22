@@ -22,7 +22,7 @@ System.config({
     "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0-beta.1.1.4",
     "aurelia-loader-default": "npm:aurelia-loader-default@1.0.0-beta.1.1.3",
     "aurelia-logging-console": "npm:aurelia-logging-console@1.0.0-beta.1.1.4",
-    "aurelia-materialize-bridge": "github:aurelia-ui-toolkits/aurelia-materialize-bridge@0.1.2",
+    "aurelia-materialize-bridge": "github:aurelia-ui-toolkits/aurelia-materialize-bridge@0.1.3",
     "aurelia-router": "npm:aurelia-router@1.0.0-beta.1.1.3",
     "aurelia-templating-binding": "npm:aurelia-templating-binding@1.0.0-beta.1.1.2",
     "aurelia-templating-resources": "npm:aurelia-templating-resources@1.0.0-beta.1.1.3",
@@ -30,7 +30,7 @@ System.config({
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "clean-css": "npm:clean-css@3.4.10",
-    "core-js": "npm:core-js@2.2.0",
+    "core-js": "npm:core-js@2.2.1",
     "fetch": "github:github/fetch@0.10.1",
     "font-awesome": "npm:font-awesome@4.5.0",
     "jquery": "npm:jquery@2.2.2",
@@ -40,7 +40,7 @@ System.config({
       "css": "github:systemjs/plugin-css@0.1.20",
       "jquery": "github:components/jquery@2.2.1"
     },
-    "github:aurelia-ui-toolkits/aurelia-materialize-bridge@0.1.2": {
+    "github:aurelia-ui-toolkits/aurelia-materialize-bridge@0.1.3": {
       "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.2.2",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.1.5",
       "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.1.2",
@@ -248,7 +248,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:core-js@2.2.0": {
+    "npm:core-js@2.2.1": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",

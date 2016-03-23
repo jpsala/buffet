@@ -9,15 +9,10 @@
     <td><input type="text" value.bind="articulo.nombre" autofocus placeholder.bind="articulo.id==-1?'':'Nombre'"></td>
     <!--<td><input type="text" value.bind="articulo.imagen"></td>-->
     <td>
-        <select md-select class="icons" value.two-way="articulo.imagen">
-            <option value="" disabled selected>Seleccione una imagen<</option>
-            <option repeat.for="img of images" value="${img.nombre}" data-icon="${img.imagenPath}" class="left circle">${img.nombre}</option>
-
+        <select md-select value.two-way="articulo.imagen">
+            <option disabled>Seleccione una imagen</option>
+            <option repeat.for="img of images" value="${img.nombre}">${img.nombre}</option>
         </select>
-        <!--<select  md-select value.two-way="articulo.imagen">-->
-            <!--<option disabled>Seleccione una imagen</option>-->
-            <!--<option repeat.for="img of images" value="${img.nombre}"><img src='${img.nombre}'></option>-->
-        <!--</select>-->
     </td>
     <td class="right-align"><input type="text" value.bind="articulo.precio_venta"></td>
     <td><img show.bind="articulo.imagenPath" src.bind="articulo.imagenPath" alt=""></td>

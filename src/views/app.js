@@ -1,18 +1,16 @@
 import {inject} from 'aurelia-framework';
 import AuthorizeStep from '../config/authorize-step';
 import AuthService from '../services/auth';
-import {Config} from '../config/config.js';
 import {CarroService} from '../services/carro';
-@inject(AuthService, Config, CarroService)
+@inject(AuthService, CarroService)
 
 export class App {
-    constructor(auth, config, carroService) {
+    constructor(auth, carroService) {
         console.clear();
         console.info('app.constructor');
         this.auth = auth;
-        this.config = config;
         this.carroService = carroService;
-        this.auth.confitureAuth();
+        this.auth.configureAuth();
     }
 
     configureRouter(config, router) {
@@ -24,6 +22,7 @@ export class App {
             {route: 'solo-carrito', name: 'carrito', moduleId: './solo-carrito', nav: true, title: 'Carrito', auth: true},
             {route: 'print', name: 'print', moduleId: './print', nav: false, title: 'Imprimir', auth: true},
             {route: 'admin', name: 'admin', moduleId: './admin/articulos', nav: true, title: 'Admin', auth: true},
+            {route: 'iae', name: 'iae', moduleId: './admin/iae', nav: false, title: 'IAE', auth: true},
             {route: '', redirect: 'menu'}
         ]);
         this.router = router;

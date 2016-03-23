@@ -1,12 +1,30 @@
 <template>
-    <style>.fa { font-size: 15px !important;}img{max-width:100px}</style>
+    <style>.fa {
+        font-size: 15px !important;
+    }
+
+    img {
+        max-width: 100px
+    }</style>
     <td><input type="text" value.bind="articulo.nombre" autofocus placeholder.bind="articulo.id==-1?'':'Nombre'"></td>
-    <td><input type="text" value.bind="articulo.imagen"></td>
+    <!--<td><input type="text" value.bind="articulo.imagen"></td>-->
+    <td>
+        <select md-select class="icons" value.two-way="articulo.imagen">
+            <option value="" disabled selected>Seleccione una imagen<</option>
+            <option repeat.for="img of images" value="${img.nombre}" data-icon="${img.imagenPath}" class="left circle">${img.nombre}</option>
+
+        </select>
+        <!--<select  md-select value.two-way="articulo.imagen">-->
+            <!--<option disabled>Seleccione una imagen</option>-->
+            <!--<option repeat.for="img of images" value="${img.nombre}"><img src='${img.nombre}'></option>-->
+        <!--</select>-->
+    </td>
     <td class="right-align"><input type="text" value.bind="articulo.precio_venta"></td>
     <td><img show.bind="articulo.imagenPath" src.bind="articulo.imagenPath" alt=""></td>
-    <!--<td><input type="button" value="Ok" click.delegate="ok()"></td>-->
-    <!--<td><input type="button" value="Cancel" click.delegate="cancel()"></td>-->
-    <td> <a click.delegate="ok()" class="btn-floating mce-btn-small waves-effect waves-light red"><i class="fa fa-save"></i></a></td>
-    <td> <a click.delegate="cancel()" class="btn-floating mce-btn-small waves-effect waves-light red"><i class="fa fa-remove"></i></a></td>
+
+    <td><a click.delegate="ok()" class="btn-floating mce-btn-small waves-effect waves-light red"><i
+            class="fa fa-floppy-o"></i></a></td>
+    <td><a click.delegate="cancel()" class="btn-floating mce-btn-small waves-effect waves-light red"><i
+            class="fa fa-ban"></i></a></td>
 
 </template>

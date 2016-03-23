@@ -5,7 +5,6 @@ import {HttpClient, json} from 'aurelia-fetch-client';
 import {Config} from '../config/config.js';
 import $ from 'jquery';
 const AUTH_TOKEN_NAME = 'ml-auth-token';
-const CLIENT_ID = 'jp';
 @inject(HttpClient, Router, Config)
 export default class AuthService {
     _user = {'nombre': '', apellido: '', id: undefined};
@@ -16,15 +15,13 @@ export default class AuthService {
         this.router = router;
         this.storage = window.localStorage;
         this._user = JSON.parse(this.storage.getItem('user'));
-        this.urlAuth = `${this.config.urlApi}/auth`;
-        this.urlLogout = `${this.config.urlApi}/logout`;
     }
 
-    confitureAuth() {
+    configureAuth() {
         let that = this;
         this.http.configure(config => {
             config
-                .withBaseUrl(this.config.urlApi)
+                .withBaseUrl(Config.getUrlApi())
                 .withDefaults({
                     headers: {
                         'Content-Type': 'application/json',
@@ -33,13 +30,14 @@ export default class AuthService {
                     },
                     credentials: 'include',
                     method: 'post',
-                    crossDomain: true})
+                    crossDomain: true
+                })
                 .withInterceptor({
                     request(request) {
                         if (that.loggedIn) {
                             //console.log('api-interceptor-request(sending token):',`${that.getToken()}`, that.router.currentInstruction, request);
                             request.headers.append('Authorization', `${that.getToken()}`);
-                        }else{
+                        } else {
                             //console.log('api-interceptor-request(nada, not logged in)');
                         }
                         return request;

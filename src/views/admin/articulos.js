@@ -1,27 +1,34 @@
-import {inject, computedFrom} from 'aurelia-framework';
+import {inject} from 'aurelia-framework';
 import {ArticulosService} from '../../services/articulos';
-import {Articulo} from '../../models/articulo';
+import {ImagenesService} from '../../services/imagenes';
+import {ArticuloModel} from '../../models/articulo';
 import $ from 'jquery';
-@inject(ArticulosService)
+@inject(ArticulosService, ArticuloModel, ImagenesService)
 export class Articulos {
     articulos = [];
     selected = false;
     copy = false;
     view = './templates/articulos-view.html';
     edit = './templates/articulos-edit.html';
-
-    constructor(articulosService) {
+    images = [];
+    constructor(articulosService, articuloModel, imagenesService) {
         this.articulosService = articulosService;
-        this.articuloNuevo = new Articulo();
+        this.articuloModel = articuloModel;
+        this.imagenesService = imagenesService;
+        this.articuloNuevo = this.articuloModel.nuevo();
     }
 
     activate() {
-        return this.articulosService.getArticulos().then(r=> {
-            this.articulos = r;
-            return this.articulos;
+        return Promise.all([
+            this.articulosService.getArticulos(),
+            this.imagenesService.getImages(),
+        ]).then((values) => {
+            this.articulos = values[0];
+            this.images = values[1];
         });
     }
-    attached(){
+
+    attached() {
         $('table tr').on({
             mouseenter: function (e) {
                 $(e.target).parent('tr').find('.borra-articulo').removeClass('hide');
@@ -50,7 +57,7 @@ export class Articulos {
                 if (this.selected.id === -1) {
                     this.selected.id = id;
                     this.articulosService.add(this.selected);
-                    this.articuloNuevo = new Articulo();
+                    this.articuloNuevo = this.articuloModel.nuevo();
                 }
                 this.selected = false;
                 this.copy = false;

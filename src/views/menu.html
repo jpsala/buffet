@@ -2,14 +2,14 @@
     <require from="./articulos"></require>
     <require from="./carro"></require>
     <style>
-        #col-articulos{float:left!important;}
-        #col-carro{float:right!important;}
+        #col-articulos{float:left!important; baaackground-color: lightblue}
+        #col-carro{float:right!important; baackground-color: lightsalmon; display: block}
     </style>
     <div class="row">
-        <div id="col-articulos" class="col m10 s10">
+        <div id="col-articulos" class="col m8 l8">
             <articulos articulos.bind="articulos"></articulos>
         </div>
-        <div id="col-carro" class="col s2 m2 .hide-on-small-only">
+        <div id="col-carro" class="col m4 l4 .hide-on-small-only">
             <carro articulos.bind="carroService.articulos"></carro>
         </div>
     </div>

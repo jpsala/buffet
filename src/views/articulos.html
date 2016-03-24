@@ -6,16 +6,29 @@
             max-width: 225px;
         }
 
-        #col-articulos .col {
+        #col-articulos {
             text-align: center
         }
-        #col-articulos .card .card-image img{
+
+        #col-articulos .card .card-image img {
             display: initial;
+        }
+
+        .card-title {
+            font-size: 19px !important;
+            height: 80px !important;
+            line-height: 25px !important;
         }
 
         /*.card .card-title {*/
         /*font-size: 1.15em*/
         /*}*/
+        .center {
+            margin: auto;
+            width: 60%;
+            border: 3px solid #73AD21;
+            padding: 10px;
+        }
 
         articulos img.responsive-img, video.responsive-video {
             max-width: 80px !important;
@@ -24,8 +37,65 @@
 
         articulos .col {
             /*width: 250px !important;*/
-            min-width: 250px !important;
+            /*min-width: 250px !important;*/
             /*max-width: 250px !important;*/
+        }
+
+        @media only screen and (min-width: 905px) {
+            .row .col.m4 {
+                /*width: 290px !important;*/
+                margin-left: auto;
+                left: auto;
+                right: auto;
+            }
+        }
+
+        @media only screen and (min-width: 1200px) {
+            #col-articulos {
+                width: 80% !important;;
+                margin-left: auto;
+                left: auto;
+                right: auto;
+            }
+
+            #col-carro {
+                width: 20% !important;
+                margin-left: auto;
+                left: auto;
+                right: auto;
+            }
+        }
+
+        .card {
+            max-width: 315px;
+        }
+
+        @media only screen and (max-width: 1200px) {
+            .row .col.l3 {
+                width: 30%;
+                margin-left: auto;
+                left: auto;
+                right: auto;
+            }
+        }
+
+        @media only screen and (max-width: 1020px) {
+            .row .col.l3 {
+                width: 50%;
+                margin-left: auto;
+                left: auto;
+                right: auto;
+            }
+        }
+
+        @media only screen and (max-width: 640px) {
+            .row .col.l3 {
+                width: 100%;
+                margin-left: auto;
+                left: auto;
+                right: auto;
+            }
+
         }
 
         /*@media only screen and (max-width: 220px) {*/
@@ -79,10 +149,10 @@
         /*}*/
     </style>
 
-    <div class="col s12 m4 l2" repeat.for="articulo of articulos">
+    <div class="col s12 m6 l3" repeat.for="articulo of articulos">
         <template if.bind="articulo.subs.length > 0">
-            <a md-modal-trigger href="#dlg-${articulo.id}">
-                <md-card
+            <a md-modal-trigger href="#dlg-${articulo.id}" class="center">
+                <md-card class="center"
                         md-image.bind="articulo.imagenPath">
                     <div class="card-title">
                         ${articulo.nombre}

@@ -23,11 +23,14 @@ export class Menu {
 function resize() {
     let w = $(window).width();
     let c = $('#col-carro .card-panel').width();
-    if (w < 450) {
-        $('#col-carro').hide();
-        $('#col-articulos').width(w - 20);
-    } else {
-        $('#col-carro').show();
-        $('#col-articulos').width(w - c - 50);
-    }
+//     if (w < 450) {
+//         $('#col-carro').hide();
+//         $('#col-articulos').width(w - 20);
+//     } else if(w < 800) {
+//         $('#col-carro').show();
+//         $('#col-articulos').width(w - c - 45);
+//     } else {
+//         $('#col-carro').show();
+//         $('#col-articulos').width(w - c - 80);
+//     }
 }

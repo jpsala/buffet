@@ -1,18 +1,45 @@
 <template bindable="router, auth, carroService">
-<md-colors md-primary-color="teal" md-accent-color="lighten-2"></md-colors>
-<md-navbar class="no-print">
-    <a href="#/about" md-waves class="brand-logo left"><span>IAE</span></a>
-    <ul class="right">
-        <li if.bind="auth.loggedIn" repeat.for="row of router.navigation" md-waves class="${row.isActive ? 'active' : ''}">
-            <a href="${row.href}">${row.title}</a>
-        </li>
-        <a md-waves if.bind="auth.loggedIn" class="right" href="/#" click.delegate="auth.logout()">
-            <span class="right">
-                Salir&nbsp;${auth.user.nombre.substr(0,10)}...
-                <i if.bind="!router.isNavigating" class="fa fa-power-off" style="display: inline;"></i>
-                <i if.bind="router.isNavigating" class="fa fa-spinner fa-spin" style="display: inline;"></i>
-            </span>
-        </a>
-    </ul>
-</md-navbar>
+    <md-colors md-primary-color="teal" md-accent-color="lighten-2"></md-colors>
+    <div class=" navbar-fixed no-print">
+        <nav style="background-color: #039be5">
+            <div class="nav-wrapper">
+                <a href="#!" class="left brand-logo">IAE</a>
+                <div style="margin-left: 50px">
+                    <ul class="hide-on-med-and-down">
+                        <li repeat.for="row of router.navigation">
+                            <a href="${row.href}">${row.title}</a>
+                        </li>
+                        <a md-waves
+                           if.bind="auth.loggedIn"
+                           class="right" href="/#"
+                           click.delegate="auth.logout()"
+                        >
+                            <span class="right">
+                                Salir&nbsp;<!--${auth.user.nombre.substr(0,10)}...-->
+                                <i if.bind="!router.isNavigating" class="fa fa-power-off" style="display: inline;"></i>
+                                <i if.bind="router.isNavigating" class="fa fa-spinner fa-spin"
+                                   style="display: inline;"></i>
+                            </span>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--<md-navbar class="no-print">-->
+
+    <!--<a href="#/about" md-waves class="brand-logo left"><span>IAE</span></a>-->
+    <!--<ul class="right">-->
+    <!--<li if.bind="auth.loggedIn" repeat.for="row of router.navigation" md-waves class="${row.isActive ? 'active' : ''}">-->
+    <!--<a href="${row.href}">${row.title}</a>-->
+    <!--</li>-->
+    <!--<a md-waves if.bind="auth.loggedIn" class="right" href="/#" click.delegate="auth.logout()">-->
+    <!--<span class="right">-->
+    <!--Salir&nbsp;&lt;!&ndash;${auth.user.nombre.substr(0,10)}...&ndash;&gt;-->
+    <!--<i if.bind="!router.isNavigating" class="fa fa-power-off" style="display: inline;"></i>-->
+    <!--<i if.bind="router.isNavigating" class="fa fa-spinner fa-spin" style="display: inline;"></i>-->
+    <!--</span>-->
+    <!--</a>-->
+    <!--</ul>-->
+    <!--</md-navbar>-->
 </template>

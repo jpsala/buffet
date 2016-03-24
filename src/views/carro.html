@@ -1,18 +1,21 @@
-<template id="carro">
+<template >
     <style>
         carro .card-panel {
-            max-width: 300px !important;
-            min-width: 300px;
+            /*max-width: 300px !important;*/
+            /*min-width: 300px;*/
+            width: 100%;
             float: right;
         }
-        carro .row{
+        carro .row {
             margin-bottom: 3px;
         }
+
         carro {
             line-height: 1.3;
         }
-        carro .remove{
-            float: right!important;
+
+        carro .remove {
+            float: right !important;
             /* display: inline; */
             /* line-height: 0; */
             /* height: 5px; */
@@ -21,48 +24,51 @@
             padding: 0;
             margin-right: -11px;
         }
-        carro img{
+
+        carro img {
             margin-top: -18px;
         }
     </style>
-    <div class="row card-panel grey lighten-5 z-depth-1">
-            <span class="black-text col s12" style="text-align: center">
+    <div id="carro" class="wraper">
+        <div class="row card-panel z-depth-1" style="background-color: #039be5; color:white">
+            <span class="col s12; background-color: #039be5!important; color:white">
                 Carrito
             </span>
-    </div>
-    <div class="carro card-panel grey lighten-5 z-depth-1" repeat.for="articulo of articulos">
-        <div class="remove row valign-wrapper">
+        </div>
+        <div class="carro card-panel grey lighten-5 z-depth-1" repeat.for="articulo of articulos">
+            <div class="remove row valign-wrapper">
             <span class="right cursor-pointer col s2" click.delegate="remove(articulo)">
                     <i class="right fa fa-close"></i>
             </span>
-        </div>
-        <div class="row valign-wrapper">
-            <div class="col s5">
-                <img src="${articulo.imagenPath}" alt="" class="circle responsive-img"/>
             </div>
+            <div class="row valign-wrapper">
+                <div class="col s5">
+                    <img src="${articulo.imagenPath}" alt="" class="circle responsive-img"/>
+                </div>
             <span class="black-text col s7 right" style="text-align: right">
                 ${articulo.nombreConSub}
             </span>
-        </div>
-        <div class="row valign-wrapper">
-            <span class="col s8"></span>
+            </div>
+            <div class="row valign-wrapper">
+                <span class="col s8"></span>
         <span class="right cursor-pointer col s4" click.delegate="remove(articulo)" style="text-align: right">
         ${articulo.precioConSub}
 
         </span>
+            </div>
         </div>
-    </div>
-    <div if.bind="carroService.visible" class="card-panel grey lighten-5 z-depth-1">
-        <div class="row valign-wrapper">
-            <div class="col s12">
-                <span>Total:</span>
+        <div if.bind="carroService.visible" class="card-panel grey lighten-5 z-depth-1">
+            <div class="row valign-wrapper">
+                <div class="col s12">
+                    <span>Total:</span>
               <span class="black-text right">
                 ${carroService.total}
               </span>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <a click.delegate="carroService.cierra()" class="col-xs-12 btn btn-lg btn-danger">Cierra e Imprime</a>
+            <div class="row">
+                <a click.delegate="carroService.cierra()" class="col-xs-12 btn btn-lg btn-danger">Cierra e Imprime</a>
+            </div>
         </div>
     </div>
 </template>

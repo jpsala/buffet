@@ -90,7 +90,7 @@ export default class AuthService {
                 this.user = response.user;
                 this.storage.setItem('user', JSON.stringify(this.user));
                 //console.log(this.router.navigateToRoute);
-                this.router.navigateToRoute('menu');
+                this.router.navigateToRoute('categorias');
             })
             .catch((err) => {
                 alert(err)

@@ -14,9 +14,14 @@
             <option repeat.for="img of images" value="${img.nombre}">${img.nombre}</option>
         </select>
     </td>
-    <td class="right-align"><input type="text" value.bind="articulo.precio_venta"></td>
     <td><img show.bind="articulo.imagenPath" src.bind="articulo.imagenPath" alt=""></td>
-
+    <td class="right-align"><input type="text" value.bind="articulo.precio_venta"></td>
+    <td>
+        <select md-select value.two-way="articulo.categoria_id">
+            <option disabled>Categoría</option>
+            <option repeat.for="categoria of categorias" value="${categoria.id}">${categoria.nombre}</option>
+        </select>
+    </td>
     <td><a click.delegate="ok()" class="btn-floating mce-btn-small waves-effect waves-light red"><i
             class="fa fa-floppy-o"></i></a></td>
     <td><a click.delegate="cancel()" class="btn-floating mce-btn-small waves-effect waves-light red"><i

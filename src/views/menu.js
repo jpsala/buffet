@@ -1,15 +1,19 @@
 import {inject, computedFrom} from 'aurelia-framework';
 import {ArticulosService} from '../services/articulos';
 import {CarroService} from '../services/carro';
-@inject(ArticulosService, CarroService)
+import {CategoriasService} from '../services/categorias';
+@inject(ArticulosService, CarroService, CategoriasService)
 export class Menu {
-    constructor(articulosService, carroService) {
+    categoria = undefined;
+    constructor(articulosService, carroService, categoriasService) {
         this.articulosService = articulosService;
         this.carroService = carroService;
+        this.categoriasService = categoriasService;
     }
 
-    activate() {
-        return this.articulosService.getArticulos().then(r=>this.articulos = r);
+    async activate(categoria) {
+        categoria.id = categoria.id === 'false' ? false:categoria.id;
+        this.articulos = await this.articulosService.getArticulosFiltrados(categoria.id);
     }
 
     attached() {
@@ -25,12 +29,12 @@ function resize() {
     let c = $('#col-carro .card-panel').width();
 //     if (w < 450) {
 //         $('#col-carro').hide();
-//         $('#col-articulos').width(w - 20);
+//         $('#col-categorias').width(w - 20);
 //     } else if(w < 800) {
 //         $('#col-carro').show();
-//         $('#col-articulos').width(w - c - 45);
+//         $('#col-categorias').width(w - c - 45);
 //     } else {
 //         $('#col-carro').show();
-//         $('#col-articulos').width(w - c - 80);
+//         $('#col-categorias').width(w - c - 80);
 //     }
 }

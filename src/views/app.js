@@ -18,12 +18,14 @@ export class App {
         config.addPipelineStep('authorize', AuthorizeStep);
         config.map([
             {route: 'login', name: 'login', moduleId: './auth/login', title: 'Login', auth: false},
-            {route: 'menu', name: 'menu', moduleId: './menu', nav: true, title: 'Menú', auth: true},
+            {route: 'categorias', name: 'categorias', moduleId: './categorias', nav: true, title: 'Menú', auth: true},
+            // {route: 'menu', name: 'menu', moduleId: './menu', nav: false, title: 'Menú', auth: true},
+            {route: 'menu/:id', name: 'menu', moduleId: './menu', nav: false, title: 'Menú', auth: true},
             {route: 'solo-carrito', name: 'carrito', moduleId: './solo-carrito', nav: true, title: 'Carrito', auth: true},
             {route: 'print', name: 'print', moduleId: './print', nav: false, title: 'Imprimir', auth: true},
             {route: 'admin', name: 'admin', moduleId: './admin/articulos', nav: true, title: 'Admin', auth: true},
             {route: 'iae', name: 'iae', moduleId: './admin/iae', nav: false, title: 'IAE', auth: true},
-            {route: '', redirect: 'menu'}
+            {route: '', redirect: 'categorias'}
         ]);
         this.router = router;
 

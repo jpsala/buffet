@@ -1,5 +1,5 @@
 export class Config {
-    static local = true;
+    static local = false;
 
     static getUrlBase() {
         return Config.local ? 'http://localhost/iae/' : 'http://iae.dyndns.org/iae';

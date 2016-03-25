@@ -10,7 +10,7 @@ export class IAE{
 
     activate(){
         Config.local = false;
-        this.router.navigateToRoute('menu');
+        this.router.navigateToRoute('categorias');
         console.log('ok')
     }
 }

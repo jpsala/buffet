@@ -14,11 +14,11 @@ export class SoloCarrito{
     }
     activate(){
         //console.log(this.menu);
-        //this.menu.addArticuloToCarrito(this.menu.articulos[0]);
-        //this.menu.addArticuloToCarrito(this.menu.articulos[2]);
-        //this.menu.addArticuloToCarrito(this.menu.articulos[0]);
-        //this.menu.addArticuloToCarrito(this.menu.articulos[1]);
-        //this.menu.addArticuloToCarrito(this.menu.articulos[4]);
+        //this.menu.addArticuloToCarrito(this.menu.categorias[0]);
+        //this.menu.addArticuloToCarrito(this.menu.categorias[2]);
+        //this.menu.addArticuloToCarrito(this.menu.categorias[0]);
+        //this.menu.addArticuloToCarrito(this.menu.categorias[1]);
+        //this.menu.addArticuloToCarrito(this.menu.categorias[4]);
     }
     canActivate(){
         if(!this.carroService.visible){

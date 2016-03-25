@@ -12,7 +12,7 @@ export class Print {
         this.router = router;
         this.auth = auth;
         this.toast = toast;
-        this.articulos = carroService.articulos;
+        this.articulos = carroService.categorias;
         this.total = this.carroService.total;
         //this.toastr = toastr;
         this.fecha = new Date();

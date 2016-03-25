@@ -3,16 +3,17 @@
         .fa { font-size: 15px !important;}img{max-width:100px}
     </style>
     <td>${articulo.id == -1 ? 'Nuevo':articulo.nombre}</td>
-    <td>${articulo.id == -1 ? 'Nuevo':articulo.imagen}</td>
-    <td class="right-align">${articulo.id == -1 ? 'Nuevo':articulo.precio_venta}</td>
+    <td>${articulo.id == -1 ? '':articulo.imagen}</td>
     <td class="center-align">
-        <img show.bind="articulo.imagenPath" src.bind="articulo.imagenPath" alt="">
-        <span show.bind="!articulo.imagenPath">Nuevo</span>
+        <img show.bind="articulo.imagenPath"  src.bind="articulo.imagenPath" alt="">
+        <span show.bind="!articulo.imagenPath"></span>
     </td>
+    <td class="right-align">${articulo.id == -1 ? '':articulo.precio_venta}</td>
+    <td>${articulo.id == -1 ? '':articulo.categoria_nombre}</td>
     <td></td>
     <td class="right-align">
         <a Show.bind="articulo.id !== -1" click.delegate="del(articulo)" class="borra-articulo btn-floating mce-btn-small waves-effect waves-light red hide"><i class="fa fa-remove"></i></a>
         <!--<a show.bind="articulo.id !== -1" click.delegate="del(articulo)" ><i class="fa fa-remove"></i></a>-->
-        <span show.bind="articulo.id == -1">Nuevo</span>
+        <span show.bind="articulo.id == -1"></span>
     </td>
 </template>

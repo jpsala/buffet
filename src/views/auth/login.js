@@ -14,7 +14,7 @@ export class Login {
 
   canActivate(){
     if(this.auth.loggedIn){
-      this.router.navigateToRoute('menu');
+      this.router.navigateToRoute('categorias');
       return false;
     }
   }

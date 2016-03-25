@@ -1,11 +1,15 @@
 <template id="articulos">
     <require from="./articulo-dlg"></require>
     <style>
-        .card img {
-            height: 180px;
-            max-width: 225px;
+        #articulos img.responsive-img {
+            max-width: 200px;
+            min-width: 200px
+            height: auto;
+            margin: auto;
         }
-
+        #articulos .valign-wrapper .col {
+            margin: auto;
+        }
         #col-articulos {
             text-align: center
         }
@@ -25,13 +29,11 @@
         /*}*/
         .center {
             margin: auto;
-            width: 60%;
-            border: 3px solid #73AD21;
-            padding: 10px;
+            width: 100%;
         }
 
         articulos img.responsive-img, video.responsive-video {
-            max-width: 80px !important;
+            /*max-width: 80px !important;*/
 
         }
 
@@ -99,47 +101,47 @@
         }
 
         /*@media only screen and (max-width: 220px) {*/
-        /*articulos .col {*/
+        /*categorias .col {*/
         /*min-width: 180px !important;*/
         /*}*/
         /*}*/
         /*@media only screen and (min-width: 220px) and (max-width: 449px) {*/
-        /*articulos .col {*/
+        /*categorias .col {*/
         /*max-width: 220px !important;*/
         /*float:none !important;*/
         /*}*/
         /*}*/
         /*@media only screen and (min-width: 450px) {*/
-        /*articulos .col {*/
+        /*categorias .col {*/
         /*max-width:33% !important;*/
         /*}*/
         /*}*/
 
         /*@media only screen and (min-width: 993px){*/
-        /*articulos .col{*/
+        /*categorias .col{*/
         /*min-width: 150px !important;*/
         /*}*/
         /*}*/
 
         /*@media only screen and (min-width: 350px) {*/
-        /*articulos .col {*/
+        /*categorias .col {*/
         /*width: 100% !important;*/
         /*}*/
         /*}*/
 
         /*@media only screen and (min-width: 180px) and (max-width: 200px){*/
-        /*articulos  .col {*/
+        /*categorias  .col {*/
         /*width: 100% !important;*/
         /*}*/
         /*}*/
         /*@media only screen and (min-width: 350px) and (max-width: 640px) {*/
-        /*articulos .col {*/
+        /*categorias .col {*/
         /*width: 50% !important;*/
         /*}*/
         /*}*/
 
         /*@media only screen and (min-width: 200px) {*/
-        /*articulos .col.s12 {*/
+        /*categorias .col.s12 {*/
         /*max-width: 180px !important;*/
         /*min-width: 180px !important;*/
         /*margin-left: auto;*/
@@ -148,7 +150,16 @@
         /*}*/
         /*}*/
     </style>
-
+    <div class="row">
+        <div class="chip left"  style="background-color: #26a69a">
+            <a href="#/categorias" class="white-text">Inicio</a>
+        </div>
+        <div class="chip left"  style="background-color: #26a69a">
+            <img show.bind="articulosService.categoria.imagenPath" src.bind="articulosService.categoria.imagenPath" alt="${articulosService.categoria.imagenPath}">
+            <a show.bind="articulosService.categoria.nombre" href="#!" class="white-text">${articulosService.categoria.nombre}</a>
+            <a show.bind="!articulosService.categoria.nombre" href="#!" class="white-text">Menú completo</a>
+        </div>
+    </div>
     <div class="col s12 m6 l3" repeat.for="articulo of articulos">
         <template if.bind="articulo.subs.length > 0">
             <a md-modal-trigger href="#dlg-${articulo.id}" class="center">
@@ -167,7 +178,10 @@
         <template if.bind="!articulo.subs.length > 0">
             <a href="">
                 <md-card click.delegate="addArticuloToCarrito(articulo)"
-                         md-image.bind="articulo.imagenPath">
+                         >
+                    <div class="valign-wrapper center">
+                        <img src="${articulo.imagenPath}" alt="" class="circle responsive-img"/>
+                    </div>
                     <div class="card-title">
                         ${articulo.nombre}
                     </div>

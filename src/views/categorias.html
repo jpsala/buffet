@@ -1,0 +1,53 @@
+<template>
+    <style>
+            .row .col.m4 {
+                /*width: 290px !important;*/
+                margin-left: auto;
+                left: auto;
+                right: auto;
+            }
+        /*@media only screen and (min-width: 905px) {*/
+            #categorias img.responsive-img {
+                max-width: 350px;
+                min-width: 250px;
+                min-height: 200px;
+                height: auto;
+                margin: auto;
+            }
+        /*}*/
+        #categorias .valign-wrapper .col {
+            margin: auto;
+        }
+        #categorias .valign-wrapper{
+            margin-top: 60px;
+        }
+        #categorias .card{
+            min-height: 400px;
+
+        }
+    </style>
+    <div class="container">
+    <div id="categorias" class="row">
+        <div class="card col s6 m6 l3">
+            <a route-href="route: menu;params.bind: {id:false}">
+                <div class="valign-wrapper">
+                    <img src="./images/menu_completo.jpg" alt="" class="circle responsive-img"/>
+                </div>
+                <div class="center">
+                    <span>Menú completo</span>
+                </div>
+            </a>
+        </div>
+        <div class="card col s6 m6 l3" repeat.for="categoria of categorias">
+            <a route-href="route: menu;params.bind: {id:categoria.id}">
+            <div class="valign-wrapper">
+                <img src="${categoria.imagenPath}" alt="" class="circle responsive-img"/>
+            </div>
+            <div class="center">
+                <span>${categoria.nombre}</span>
+            </div>
+            </a>
+        </div>
+    </div>
+    </div>
+</template>

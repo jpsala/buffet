@@ -24,7 +24,7 @@ export class PageObjectWelcome {
     return element(by.css('button[type="submit"]')).click();
   }
 
-  openAlertDialog() {
+  openAlertDialog()           {
     return browser.wait(() => {
       this.pressSubmitButton();
 
